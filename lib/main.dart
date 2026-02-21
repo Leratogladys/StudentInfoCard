@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
+              // ignore: avoid_print
               print("Settings pressed");
             },
           ),
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(child: Text("Welcome to my first app!")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // ignore: avoid_print
           print("FAB pressed");
         },
         child: const Icon(Icons.add),
@@ -70,11 +72,39 @@ class PrintedPhoto extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    return Column(
+      children: [Text("Person: $personName"), Text("Date: $dateTaken")],
+    );
+  }
+}
+
+class Whiteboard extends StatefulWidget {
+  const Whiteboard({super.key});
+
+  @override
+  State<Whiteboard> createState() => _WhiteboardState();
+}
+
+class _WhiteboardState extends State<Whiteboard> {
+  String message = "Hello";
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Person: $personName"),
-        Text("Date: $dateTaken"),
+        Text(message),
+        Text("Count: $counter"),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              message = "World";
+              counter++;
+            });
+          },
+          child: const Text("Change"),
+        ),
       ],
     );
   }
