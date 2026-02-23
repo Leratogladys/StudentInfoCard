@@ -51,38 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.blue[50],
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Colors.blue, width: 2),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        "Student Name: $studentName",
-                        style: const TextStyle(fontSize: 24),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "Age: $studentAge",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.teal,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "Favourate Subject: $favourateSubject",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.teal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ExtractedWidget(studentName: studentName, studentAge: studentAge, favourateSubject: favourateSubject),
                 const SizedBox(height: 30),
 
                 SizedBox(
@@ -120,6 +89,55 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ExtractedWidget extends StatelessWidget {
+  const ExtractedWidget({
+    super.key,
+    required this.studentName,
+    required this.studentAge,
+    required this.favourateSubject,
+  });
+
+  final String studentName;
+  final int studentAge;
+  final String favourateSubject;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.blue[50],
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: Colors.blue, width: 2),
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Student Name: $studentName",
+            style: const TextStyle(fontSize: 24),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "Age: $studentAge",
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.teal,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "Favourate Subject: $favourateSubject",
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.teal,
+            ),
+          ),
+        ],
       ),
     );
   }
